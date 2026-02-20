@@ -299,47 +299,47 @@ Below are screenshots demonstrating configuration and verification.
 
 ## 🖼 Task 1 – VM Setup
 
-![Task1-1](Week 4/images/1.png)
-![Task1-2](Week 4/images/2.png)
-![Task1-3](Week 4/images/3.png)
+![Task1-1](images/1.png)
+![Task1-2](images/2.png)
+![Task1-3](images/3.png)
 
 ---
 
 ## 🖼 Task 2 – LAMP Setup
 
-![Task2-1](Week 4/images/4.png)
+![Task2-1](images/4.png)
 
 ---
 
 ## 🖼 Task 3 – WordPress Installation
 
-![Task3-1](Week 4/images/5.png)
-![Task3-2](Week 4/images/6.png)
-![Task3-3](Week 4/images/7.png)
-![Task3-4](Week 4/images/8.png)
-![Task3-5](Week 4/images/9.png)
-![Task3-6](Week 4/images/10.png)
-![Task3-7](Week 4/images/11.png)
+![Task3-1](images/5.png)
+![Task3-2](images/6.png)
+![Task3-3](images/7.png)
+![Task3-4](images/8.png)
+![Task3-5](images/9.png)
+![Task3-6](images/10.png)
+![Task3-7](images/11.png)
 
 ---
 
 ## 🖼 Task 4 – Virtual Hosts & DNS Mapping
 
-![Task4-1](Week 4/images/12.png)
+![Task4-1](images/12.png)
 
 ---
 
 ## 🖼 Task 5 – Migration Script
 
-![Task5-1](Week 4/images/13.png)
-![Task5-2](Week 4/images/14.png)
+![Task5-1](images/13.png)
+![Task5-2](images/14.png)
 
 ---
 
 ## 🖼 Task 6 – PHP Version Verification
 
-![Task6-1](Week 4/images/15.png)
-![Task6-2](Week 4/images/16.png)
+![Task6-1](images/15.png)
+![Task6-2](images/16.png)
 
 ---
 
