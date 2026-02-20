@@ -287,33 +287,33 @@ Below are screenshots from each task demonstrating execution and verification.
 
 ## 🖼 Jenkins Setup & Builds
 
-![1](Week 6/images/1.png)
-![2](Week 6/images/2.png)
-![3](Week 6/images/3.png)
-![4](Week 6/images/4.png)
-![5](Week 6/images/5.png)
-![6](Week 6/images/6.png)
+![1](images/1.png)
+![2](images/2.png)
+![3](images/3.png)
+![4](images/4.png)
+![5](images/5.png)
+![6](images/6.png)
 
 ---
 
 ## 🖼 Deployment on Ubuntu
 
-![7](Week 6/images/7.png)
-![8](Week 6/images/8.png)
-![9](Week 6/images/9.png)
-![10](Week 6/images/10.png)
-![11](Week 6/images/11.png)
-![12](Week 6/images/12.png)
+![7](images/7.png)
+![8](images/8.png)
+![9](images/9.png)
+![10](images/10.png)
+![11](images/11.png)
+![12](images/12.png)
 
 ---
 
 ## 🖼 Windows Deployment & Validation
 
-![13](Week 6/images/13.png)
-![14](Week 6/images/14.png)
-![15](Week 6/images/15.png)
-![16](Week 6/images/16.png)
-![17](Week 6/images/17.png)
-![18](Week 6/images/18.png)
+![13](images/13.png)
+![14](images/14.png)
+![15](images/15.png)
+![16](images/16.png)
+![17](images/17.png)
+![18](images/18.png)
 
 ---
