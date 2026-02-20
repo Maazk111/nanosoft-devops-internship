@@ -156,19 +156,19 @@ Below are screenshots demonstrating successful pipeline execution and deployment
 
 ## 🖼 Pipeline Overview
 
-![Docker-CICD-1](Week 7/images/1.png)
+![Docker-CICD-1](snapshots/Docker%20CICD/1.png)
 
 ---
 
 ## 🖼 Upload TAR to Deployment VM (SCP Stage)
 
-![Docker-CICD-2](Week 7/images/2.png)
+![Docker-CICD-2](snapshots/Docker%20CICD/2.png)
 
 ---
 
 ## 🖼 Deploy on Target + Health Check Success
 
-![Docker-CICD-3](Week 7/images/3.png)
+![Docker-CICD-3](snapshots/Docker%20CICD/3.png)
 
 ---
 
@@ -383,35 +383,29 @@ Server: nginx/1.29.4
 
 # 📸 Snapshots
 
-All images stored under:
-
-```
-Week 7/images/
-```
-
 ---
 
 ## 🖼 Database Verification
 
-![Compose-1](Week 7/images/1.png)
+![Compose-1](snapshots/Docker%20Compose%20%E2%80%93%20Multi-Container%20Application/1.png)
 
 ---
 
 ## 🖼 Project Structure
 
-![Compose-2](Week 7/images/2.png)
+![Compose-2](snapshots/Docker%20Compose%20%E2%80%93%20Multi-Container%20Application/2.png)
 
 ---
 
 ## 🖼 Container Status (docker compose ps)
 
-![Compose-3](Week 7/images/3.png)
+![Compose-3](snapshots/Docker%20Compose%20%E2%80%93%20Multi-Container%20Application/3.png)
 
 ---
 
 ## 🖼 docker-compose.yml Configuration
 
-![Compose-4](Week 7/images/4.png)
+![Compose-4](snapshots/Docker%20Compose%20%E2%80%93%20Multi-Container%20Application/4.png)
 
 ---
 
@@ -676,37 +670,37 @@ Week 7/images/
 
 ## 🖼 Network Isolation Test
 
-![DeepDive-1](Week 7/images/1.png)
+![DeepDive-1](snapshots/Docker%20Deep%20Dive/1.png)
 
 ---
 
 ## 🖼 Connectivity Fix
 
-![DeepDive-2](Week 7/images/2.png)
+![DeepDive-2](snapshots/Docker%20Deep%20Dive/2.png)
 
 ---
 
 ## 🖼 Host Network Demo
 
-![DeepDive-3](Week 7/images/3.png)
+![DeepDive-3](snapshots/Docker%20Deep%20Dive/3.png)
 
 ---
 
 ## 🖼 Swarm Overlay Networking
 
-![DeepDive-4](Week 7/images/4.png)
+![DeepDive-4](snapshots/Docker%20Deep%20Dive/4.png)
 
 ---
 
 ## 🖼 tcpdump Capture
 
-![DeepDive-5](Week 7/images/5.png)
+![DeepDive-5](snapshots/Docker%20Deep%20Dive/5.png)
 
 ---
 
 ## 🖼 pcap Analysis
 
-![DeepDive-6](Week 7/images/6.png)
+![DeepDive-6](snapshots/Docker%20Deep%20Dive/6.png)
 
 ---
 
@@ -939,51 +933,33 @@ This demonstrates a production-grade log aggregation pipeline.
 
 # 📸 Snapshots
 
-All images stored under:
-
-```
-Week 7/snapshots/Docker Logs & Monitoring/
-```
-
----
-
 ## 🖼 Loki Query in Grafana
 
-```markdown
-![Logs-1](Week 7/snapshots/Docker Logs & Monitoring/1.png)
-```
+![Logs-1](snapshots/Docker%20Logs%20%26%20Monitoring/1.png)
 
 ---
 
 ## 🖼 Docker Logging Driver Verification
 
-```markdown
-![Logs-2](Week 7/snapshots/Docker Logs & Monitoring/2.png)
-```
+![Logs-2](snapshots/Docker%20Logs%20%26%20Monitoring/2.png)
 
 ---
 
 ## 🖼 Grafana Login Page
 
-```markdown
-![Logs-3](Week 7/snapshots/Docker Logs & Monitoring/3.png)
-```
+![Logs-3](snapshots/Docker%20Logs%20%26%20Monitoring/3.png)
 
 ---
 
 ## 🖼 Running Containers
 
-```markdown
-![Logs-4](Week 7/snapshots/Docker Logs & Monitoring/4.png)
-```
+![Logs-4](snapshots/Docker%20Logs%20%26%20Monitoring/4.png)
 
 ---
 
 ## 🖼 Inspect Log Path
 
-```markdown
-![Logs-5](Week 7/snapshots/Docker Logs & Monitoring/5.png)
-```
+![Logs-5](snapshots/Docker%20Logs%20%26%20Monitoring/5.png)
 
 ---
 
@@ -1240,75 +1216,51 @@ Observed:
 
 # 📸 Snapshots
 
-All images stored under:
-
-```
-Week 7/snapshots/Docker Swarm Lab/
-```
-
----
-
 ## 🖼 Swarm Init
 
-```markdown
-![Swarm-1](Week 7/snapshots/Docker Swarm Lab/1.png)
-```
+![Swarm-1](snapshots/Docker%20Swarm/1.png)
 
 ---
 
 ## 🖼 Worker Join
 
-```markdown
-![Swarm-2](Week 7/snapshots/Docker Swarm Lab/2.png)
-```
+![Swarm-2](snapshots/Docker%20Swarm/2.png)
 
 ---
 
 ## 🖼 Node List
 
-```markdown
-![Swarm-3](Week 7/snapshots/Docker Swarm Lab/3.png)
-```
+![Swarm-3](snapshots/Docker%20Swarm/3.png)
 
 ---
 
 ## 🖼 Service Deployment
 
-```markdown
-![Swarm-4](Week 7/snapshots/Docker Swarm Lab/4.png)
-```
+![Swarm-4](snapshots/Docker%20Swarm/4.png)
 
 ---
 
 ## 🖼 Service Tasks Distribution
 
-```markdown
-![Swarm-5](Week 7/snapshots/Docker Swarm Lab/5.png)
-```
+![Swarm-5](snapshots/Docker%20Swarm/5.png)
 
 ---
 
 ## 🖼 Rolling Update
 
-```markdown
-![Swarm-6](Week 7/snapshots/Docker Swarm Lab/6.png)
-```
+![Swarm-6](snapshots/Docker%20Swarm/6.png)
 
 ---
 
 ## 🖼 VM Simulation
 
-```markdown
-![Swarm-7](Week 7/snapshots/Docker Swarm Lab/7.png)
-```
+![Swarm-7](snapshots/Docker%20Swarm/7.png)
 
 ---
 
 ## 🖼 Node Down Detection
 
-```markdown
-![Swarm-8](Week 7/snapshots/Docker Swarm Lab/8.png)
-```
+![Swarm-8](snapshots/Docker%20Swarm/8.png)
 
 ---
 
@@ -1521,59 +1473,39 @@ Observed:
 
 # 📸 Snapshots
 
-All images stored under:
-
-```
-Week 7/snapshots/Docker Volumes & Backup/
-```
-
----
-
 ## 🖼 Volume Inspection
 
-```markdown
-![Volume-1](Week 7/snapshots/Docker Volumes & Backup/1.png)
-```
+![Volume-1](snapshots/Docker%20Volumes%20%26%20Backup/1.png)
 
 ---
 
 ## 🖼 Backup Files Created
 
-```markdown
-![Volume-2](Week 7/snapshots/Docker Volumes & Backup/2.png)
-```
+![Volume-2](snapshots/Docker%20Volumes%20%26%20Backup/2.png)
 
 ---
 
 ## 🖼 Remote Backup Server
 
-```markdown
-![Volume-3](Week 7/snapshots/Docker Volumes & Backup/3.png)
-```
+![Volume-3](snapshots/Docker%20Volumes%20%26%20Backup/3.png)
 
 ---
 
 ## 🖼 Restore Verification
 
-```markdown
-![Volume-4](Week 7/snapshots/Docker Volumes & Backup/4.png)
-```
+![Volume-4](snapshots/Docker%20Volumes%20%26%20Backup/4.png)
 
 ---
 
 ## 🖼 Results Directory
 
-```markdown
-![Volume-5](Week 7/snapshots/Docker Volumes & Backup/5.png)
-```
+![Volume-5](snapshots/Docker%20Volumes%20%26%20Backup/5.png)
 
 ---
 
 ## 🖼 Final Data Check
 
-```markdown
-![Volume-6](Week 7/snapshots/Docker Volumes & Backup/6.png)
-```
+![Volume-6](snapshots/Docker%20Volumes%20%26%20Backup/6.png)
 
 ---
 
@@ -1769,25 +1701,25 @@ Below are screenshots demonstrating image optimization and stack verification.
 
 ## 🖼 Image Listing (Latest)
 
-![PR-1](Week 7/Production-Ready Dockerfile/1.png)
+![PR-1](snapshots/Production-Ready%20Dockerfile/1.png)
 
 ---
 
 ## 🖼 Docker Compose Running Stack
 
-![PR-2](Week 7/Production-Ready Dockerfile/2.png)
+![PR-2](snapshots/Production-Ready%20Dockerfile/2.png)
 
 ---
 
 ## 🖼 WebAPI Before vs After
 
-![PR-3](Week 7/Production-Ready Dockerfile/3.png)
+![PR-3](snapshots/Production-Ready%20Dockerfile/3.png)
 
 ---
 
 ## 🖼 API Before vs After
 
-![PR-4](Week 7/Production-Ready Dockerfile/4.png)
+![PR-4](snapshots/Production-Ready%20Dockerfile/4.png)
 
 ---
 
@@ -1968,19 +1900,19 @@ Below are screenshots demonstrating container security and monitoring.
 
 ## 🖼 Read-Only Filesystem Test
 
-![Secure-1](Week 7/Secure Docker Containers/1.png)
+![Secure-1](snapshots/Secure%20Docker%20Containers/1.png)
 
 ---
 
 ## 🖼 tmpfs Writable Test
 
-![Secure-2](Week 7/Secure Docker Containers/2.png)
+![Secure-2](snapshots/Secure%20Docker%20Containers/2.png)
 
 ---
 
 ## 🖼 Docker Stats Monitoring
 
-![Secure-3](Week 7/Secure Docker Containers/3.png)
+![Secure-3](snapshots/Secure%20Docker%20Containers/3.png)
 
 ---
 
