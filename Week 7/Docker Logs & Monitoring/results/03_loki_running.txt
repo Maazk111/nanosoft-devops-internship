@@ -1,0 +1,5 @@
+==== Verify: Stack running ====
+NAME       IMAGE                    COMMAND                  SERVICE    CREATED          STATUS          PORTS
+grafana    grafana/grafana:10.4.2   "/run.sh"                grafana    42 seconds ago   Up 42 seconds   0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+loki       grafana/loki:2.9.8       "/usr/bin/loki -conf…"   loki       45 seconds ago   Up 42 seconds   0.0.0.0:3100->3100/tcp, [::]:3100->3100/tcp
+promtail   grafana/promtail:2.9.8   "/usr/bin/promtail -…"   promtail   42 seconds ago   Up 42 seconds   

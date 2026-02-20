@@ -1,0 +1,47 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.iml
+
+# Vagrant
+.vagrant/
+
+# Node / Angular
+node_modules/
+dist/
+build/
+.cache/
+.npm/
+npm-debug.log*
+yarn-error.log*
+.angular/
+coverage/
+
+# Java / Maven / Gradle
+target/
+.build/
+*.class
+*.war
+*.jar
+*.ear
+.mvn/
+.gradle/
+out/
+
+# Python (if any tooling scripts)
+__pycache__/
+*.pyc
+
+# Docker
+.env
+.env.*
+*.log
+
+# Misc
+*.tgz
+*.zip
+*.tar

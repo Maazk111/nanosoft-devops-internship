@@ -1,0 +1,11 @@
+==== Verify: App logs exist locally (json-file) ====
+2026-01-20T12:25:43+00:00 INFO Hello from log-app line=7
+2026-01-20T12:25:44+00:00 INFO Hello from log-app line=8
+2026-01-20T12:25:45+00:00 INFO Hello from log-app line=9
+2026-01-20T12:25:46+00:00 INFO Hello from log-app line=10
+2026-01-20T12:25:47+00:00 INFO Hello from log-app line=11
+2026-01-20T12:25:48+00:00 INFO Hello from log-app line=12
+2026-01-20T12:25:49+00:00 INFO Hello from log-app line=13
+2026-01-20T12:25:50+00:00 INFO Hello from log-app line=14
+2026-01-20T12:25:51+00:00 INFO Hello from log-app line=15
+2026-01-20T12:25:52+00:00 INFO Hello from log-app line=16

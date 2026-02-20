@@ -1,0 +1,48 @@
+# -- mode: ruby --
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/jammy64"
+
+  # Helps avoid "Timed out while waiting for the machine to boot"
+  config.vm.boot_timeout = 600
+
+  # Host-only network (stable on Windows/VirtualBox)
+  config.vm.network "private_network", ip: "192.168.56.82"
+
+  # ---- Synced folders (BOTH) ----
+  # Full repo (vProfile + eMart + everything)
+  config.vm.synced_folder "..", "/vagrant_data"
+
+  # Direct shortcut to emartapp (optional but you requested it)
+  config.vm.synced_folder "../emartapp", "/vagrant_emart"
+  # -------------------------------
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = 2
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    set -e
+
+    sudo apt-get update -y
+    sudo apt-get install -y ca-certificates curl gnupg
+
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    sudo apt-get update -y
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+    # Allow vagrant user to run docker without sudo
+    sudo usermod -aG docker vagrant
+
+    sudo systemctl enable docker
+    sudo systemctl start docker
+  SHELL
+end

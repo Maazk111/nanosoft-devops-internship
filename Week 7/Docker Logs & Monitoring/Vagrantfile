@@ -1,0 +1,27 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/jammy64"
+
+  config.vm.define "docker-logs" do |vm|
+    vm.vm.hostname = "docker-logs"
+    vm.vm.network "private_network", ip: "192.168.56.92"
+
+    # Grafana exposed to your HOST on http://localhost:3000
+    vm.vm.network "forwarded_port", guest: 3000, host: 3000, auto_correct: true
+
+    vm.vm.provider "virtualbox" do |vb|
+      vb.name = "week7-docker-logs"
+      vb.memory = 2048
+      vb.cpus = 2
+    end
+
+    vm.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+
+    vm.vm.provision "shell",
+      inline: <<-SHELL
+        set -e
+        chmod +x /vagrant/provisioning/*.sh /vagrant/scripts/*.sh /vagrant/app/*.sh || true
+        /vagrant/provisioning/install_docker.sh
+        /vagrant/provisioning/configure_logging.sh
+      SHELL
+  end
+end

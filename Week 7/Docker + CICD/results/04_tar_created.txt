@@ -1,0 +1,1 @@
+-rwxrwxrwx 1 vagrant vagrant 25M Jan 20 16:19 /vagrant/results/artifacts/week7-demo_031507f.tar.gz

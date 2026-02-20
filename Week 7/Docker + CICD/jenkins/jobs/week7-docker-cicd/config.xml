@@ -1,0 +1,231 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.41">
+  <actions/>
+  <description>Week7 Docker CI/CD (offline push via tar + deploy + rollback)</description>
+  <keepDependencies>false</keepDependencies>
+
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.BooleanParameterDefinition>
+          <name>BROKEN</name>
+          <description>If true, app health endpoint fails to trigger rollback</description>
+          <defaultValue>false</defaultValue>
+        </hudson.model.BooleanParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.92">
+    <script><![CDATA[
+pipeline {
+  agent any
+
+  environment {
+    DEPLOY_HOST = "192.168.56.111"
+    DEPLOY_USER = "vagrant"
+    APP_NAME    = "week7-demo"
+    APP_PORT    = "8081"          // host port on deploy VM
+    RESULT_DIR  = "/vagrant/results"
+  }
+
+  stages {
+
+    stage('Prepare App + Git Commit') {
+      steps {
+        sh '''
+          set -e
+          mkdir -p ${RESULT_DIR}
+          rm -rf app && mkdir -p app
+
+          cat > app/requirements.txt <<'EOF'
+flask==3.0.0
+EOF
+
+          cat > app/app.py <<'EOF'
+from flask import Flask
+import os
+
+app = Flask(__name__)
+
+VERSION = os.environ.get("APP_VERSION", "dev")
+BROKEN = os.environ.get("BROKEN", "false").lower() == "true"
+
+@app.get("/")
+def home():
+    return f"Hello from {VERSION}\\n", 200
+
+@app.get("/health")
+def health():
+    if BROKEN:
+        return "FAIL\\n", 500
+    return "OK\\n", 200
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
+EOF
+
+          cat > app/Dockerfile <<'EOF'
+FROM python:3.11-alpine
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app.py .
+EXPOSE 8080
+CMD ["python","/app/app.py"]
+EOF
+
+          cd app
+          git init -q
+          git config user.email "jenkins@local"
+          git config user.name "jenkins"
+          git add .
+          git commit -qm "build ${BUILD_NUMBER}"
+          echo "Commit: $(git rev-parse --short HEAD)" | tee ${RESULT_DIR}/01_commit_hash.txt
+        '''
+      }
+    }
+
+    stage('Build Image (tag = commit hash)') {
+      steps {
+        sh '''
+          set -e
+          cd app
+          COMMIT="$(git rev-parse --short HEAD)"
+          echo "${COMMIT}" > ${RESULT_DIR}/commit.txt
+
+          docker build -t ${APP_NAME}:${COMMIT} .
+          echo "Built: ${APP_NAME}:${COMMIT}" | tee ${RESULT_DIR}/02_build_image.txt
+        '''
+      }
+    }
+
+    stage('Scan Image (Trivy)') {
+      steps {
+        sh '''
+          set -e
+          COMMIT="$(cat ${RESULT_DIR}/commit.txt)"
+          trivy image --severity HIGH,CRITICAL --no-progress ${APP_NAME}:${COMMIT} | tee ${RESULT_DIR}/03_trivy_scan.txt
+        '''
+      }
+    }
+
+    stage('Package Image as TAR (simulate push)') {
+      steps {
+        sh '''
+          set -e
+          COMMIT="$(cat ${RESULT_DIR}/commit.txt)"
+          mkdir -p ${RESULT_DIR}/artifacts
+          docker save ${APP_NAME}:${COMMIT} | gzip -c > ${RESULT_DIR}/artifacts/${APP_NAME}_${COMMIT}.tar.gz
+          ls -lah ${RESULT_DIR}/artifacts/${APP_NAME}_${COMMIT}.tar.gz | tee ${RESULT_DIR}/04_tar_created.txt
+        '''
+      }
+    }
+
+    stage('Upload TAR to Deploy VM (SCP)') {
+      steps {
+        sh '''
+          set -e
+          COMMIT="$(cat ${RESULT_DIR}/commit.txt)"
+          TAR="${RESULT_DIR}/artifacts/${APP_NAME}_${COMMIT}.tar.gz"
+
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            ${DEPLOY_USER}@${DEPLOY_HOST} "sudo mkdir -p /opt/deploy && sudo chown -R ${DEPLOY_USER}:${DEPLOY_USER} /opt/deploy"
+
+          scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            ${TAR} ${DEPLOY_USER}@${DEPLOY_HOST}:/opt/deploy/ | tee ${RESULT_DIR}/05_scp_upload.txt
+        '''
+      }
+    }
+
+    stage('Deploy on Target + Health Check (Rollback)') {
+      steps {
+        sh '''
+          set -e
+          COMMIT="$(cat ${RESULT_DIR}/commit.txt)"
+          TAR_NAME="${APP_NAME}_${COMMIT}.tar.gz"
+
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+            ${DEPLOY_USER}@${DEPLOY_HOST} "bash -s" <<EOF | tee ${RESULT_DIR}/06_deploy_and_health.txt
+set -e
+
+APP_NAME="${APP_NAME}"
+APP_PORT="${APP_PORT}"
+COMMIT="${COMMIT}"
+BROKEN="${BROKEN}"
+TAR_NAME="${TAR_NAME}"
+
+cd /opt/deploy
+
+PREV_TAG_FILE=/opt/deploy/previous_tag.txt
+PREV_TAG=""
+if [ -f "\$PREV_TAG_FILE" ]; then PREV_TAG=\$(cat "\$PREV_TAG_FILE"); fi
+echo "Previous tag: \$PREV_TAG"
+
+if [ ! -f "\$TAR_NAME" ]; then
+  echo "ERROR: TAR not found: /opt/deploy/\$TAR_NAME"
+  ls -lah /opt/deploy || true
+  exit 1
+fi
+
+# Load image
+gzip -dc "\$TAR_NAME" | docker load
+
+# Stop current if exists
+docker rm -f "\$APP_NAME" >/dev/null 2>&1 || true
+
+# Run new container
+docker run -d --name "\$APP_NAME" -p "\$APP_PORT":8080 \
+  -e APP_VERSION="\$COMMIT" \
+  -e BROKEN="\$BROKEN" \
+  "\$APP_NAME:\$COMMIT"
+
+sleep 3
+HTTP_CODE=\$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:\$APP_PORT/health || true)
+echo "Health HTTP code: \$HTTP_CODE"
+
+if [ "\$HTTP_CODE" != "200" ]; then
+  echo "DEPLOY FAILED -> ROLLBACK"
+  if [ -n "\$PREV_TAG" ]; then
+    docker rm -f "\$APP_NAME" >/dev/null 2>&1 || true
+    docker run -d --name "\$APP_NAME" -p "\$APP_PORT":8080 \
+      -e APP_VERSION="\$PREV_TAG" \
+      -e BROKEN=false \
+      "\$APP_NAME:\$PREV_TAG"
+    sleep 2
+    curl -fsS http://127.0.0.1:\$APP_PORT/health >/dev/null
+    echo "ROLLED BACK to \$PREV_TAG"
+  else
+    echo "No previous tag found, cannot rollback"
+  fi
+  exit 1
+fi
+
+echo "\$COMMIT" > "\$PREV_TAG_FILE"
+curl -fsS http://127.0.0.1:\$APP_PORT/ > /opt/deploy/current_version.txt
+echo "DEPLOY OK: \$COMMIT"
+EOF
+        '''
+      }
+    }
+  }
+
+  post {
+    always {
+      sh '''
+        echo "Jenkins build: ${BUILD_TAG}" | tee ${RESULT_DIR}/SUMMARY_cicd.txt
+        echo "BROKEN param: ${BROKEN}" | tee -a ${RESULT_DIR}/SUMMARY_cicd.txt
+        echo "Deployed endpoint: http://192.168.56.111:8081/" | tee -a ${RESULT_DIR}/SUMMARY_cicd.txt
+        echo "Health endpoint: http://192.168.56.111:8081/health" | tee -a ${RESULT_DIR}/SUMMARY_cicd.txt
+        echo "Jenkins URL: http://localhost:8080 (admin/admin)" | tee -a ${RESULT_DIR}/SUMMARY_cicd.txt
+      '''
+      archiveArtifacts artifacts: 'results/**', fingerprint: true
+    }
+  }
+}
+]]></script>
+    <sandbox>true</sandbox>
+  </definition>
+
+  <disabled>false</disabled>
+</flow-definition>

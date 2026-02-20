@@ -1,0 +1,4 @@
+Jenkins build: jenkins-week7-docker-6
+BROKEN param: false
+Deployed endpoint: http://192.168.56.111:8081/
+Health endpoint: http://192.168.56.111:8081/health

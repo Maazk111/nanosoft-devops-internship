@@ -1,0 +1,46 @@
+# -- mode: ruby --
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"
+
+  # boot time on Windows can be slow
+  config.vm.boot_timeout = 600
+
+  # stable host-only networking (NO bridge prompt)
+  config.vm.network "private_network", ip: "192.168.56.82"
+
+  # ---- Synced folders ----
+  # Full repo (vProfile is here)
+  config.vm.synced_folder "..", "/vagrant_data"
+
+  # Direct shortcut to eMart
+  config.vm.synced_folder "../emartapp", "/vagrant_emart"
+  # ------------------------
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 4096
+    vb.cpus = 2
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    set -e
+
+    sudo apt-get update -y
+    sudo apt-get install -y ca-certificates curl gnupg
+
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    sudo apt-get update -y
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+    sudo usermod -aG docker vagrant
+    sudo systemctl enable docker
+    sudo systemctl start docker
+  SHELL
+end

@@ -1,0 +1,18 @@
+Week7 Docker Logs & Monitoring - Proof Summary
+
+1) json-file logging driver configured via /etc/docker/daemon.json
+   - log-opts: max-size=5m, max-file=3 (rotation)
+
+2) Log rotation test:
+   - rotate-test container creates heavy logs
+   - verify rotated files in /var/lib/docker/containers/<id>/
+
+3) Centralized logs:
+   - Loki stores logs
+   - Promtail ships docker json logs to Loki
+   - Grafana visualizes Loki datasource (auto-provisioned)
+
+Grafana:
+- URL: http://localhost:3000
+- user/pass: admin/admin
+- Explore -> Loki -> query: {job="docker"}

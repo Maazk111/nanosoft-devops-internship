@@ -1,0 +1,12 @@
+total 800K
+drwx--x--- 4 root root 4.0K Jan 20 12:25 .
+drwx--x--- 7 root root 4.0K Jan 20 12:25 ..
+drwx------ 2 root root 4.0K Jan 20 12:25 checkpoints
+-rw------- 1 root root 3.6K Jan 20 12:25 config.v2.json
+-rw-r----- 1 root root 760K Jan 20 12:25 df9d26bf5c787ec1007ca8bab14b5041c113647454dd7d5bcab171f4dc3ca5c5-json.log
+-rw------- 1 root root 1.5K Jan 20 12:25 hostconfig.json
+-rw-r--r-- 1 root root   13 Jan 20 12:25 hostname
+-rw-r--r-- 1 root root  172 Jan 20 12:25 hosts
+drwx--x--- 2 root root 4.0K Jan 20 12:25 mounts
+-rw-r--r-- 1 root root  261 Jan 20 12:25 resolv.conf
+-rw-r--r-- 1 root root   71 Jan 20 12:25 resolv.conf.hash
