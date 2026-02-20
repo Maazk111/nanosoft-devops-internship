@@ -1,0 +1,35 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"
+
+  # -------------------------
+  # VM 1: wp1
+  # -------------------------
+  config.vm.define "wp1" do |wp1|
+    wp1.vm.hostname = "wp1.local"
+    wp1.vm.network "private_network", ip: "192.168.56.10"
+
+    wp1.vm.provider "virtualbox" do |vb|
+      vb.name = "wp1"
+      vb.memory = 2048
+      vb.cpus = 2
+    end
+
+    wp1.vm.provision "shell", path: "scripts/wp1-provision.sh"
+  end
+
+  # -------------------------
+  # VM 2: wp2
+  # -------------------------
+  config.vm.define "wp2" do |wp2|
+    wp2.vm.hostname = "wp2.local"
+    wp2.vm.network "private_network", ip: "192.168.56.11"
+
+    wp2.vm.provider "virtualbox" do |vb|
+      vb.name = "wp2"
+      vb.memory = 2048
+      vb.cpus = 2
+    end
+
+    wp2.vm.provision "shell", path: "scripts/wp2-provision.sh"
+  end
+end
