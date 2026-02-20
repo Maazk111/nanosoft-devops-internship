@@ -333,55 +333,36 @@ Below are screenshots from each task demonstrating execution and output.
 ## 🖼 Task 1 – Basic Commands
 
 ![Task1-1](Task%201/1.png)
-
 ![Task1-2](Task%201/2.png)
-
 ![Task1-3](Task%201/3.png)
-
 ![Task1-4](Task%201/4.png)
-
 ![Task1-5](Task%201/5.png)
-
 ![Task1-6](Task%201/6.png)
-
 ![Task1-7](Task%201/7.png)
-
 ![Task1-8](Task%201/8.png)
 
 ---
 
 ## 🖼 Task 2 – User & Group Management
 
-![Task2-1](Week%201/Task%202/1.png)
-
-![Task2-2](Week%201/Task%202/2.png)
-
-![Task2-3](Week%201/Task%202/3.png)
-
-![Task2-4](Week%201/Task%202/4.png)
-
-![Task2-5](Week%201/Task%202/5.png)
-
-![Task2-6](Week%201/Task%202/6.png)
-
-![Task2-7](Week%201/Task%202/7.png)
-
-![Task2-8](Week%201/Task%202/8.png)
-
-![Task2-9](Week%201/Task%202/9.png)
-
-![Task2-10](Week%201/Task%202/10.png)
+![Task2-1](Task%202/1.png)
+![Task2-2](Task%202/2.png)
+![Task2-3](Task%202/3.png)
+![Task2-4](Task%202/4.png)
+![Task2-5](Task%202/5.png)
+![Task2-6](Task%202/6.png)
+![Task2-7](Task%202/7.png)
+![Task2-8](Task%202/8.png)
+![Task2-9](Task%202/9.png)
+![Task2-10](Task%202/10.png)
 
 ---
 
 ## 🖼 Task 3 – Shell Script & Permissions
 
-![Task3-1](Week%201/Task%203/1.png)
-
-![Task3-2](Week%201/Task%203/2.png)
-
-![Task3-3](Week%201/Task%203/3.png)
-
-![Task3-4](Week%201/Task%203/4.png)
+![Task3-1](Task%203/1.png)
+![Task3-2](Task%203/2.png)
+![Task3-3](Task%203/3.png)
+![Task3-4](Task%203/4.png)
 
 ---
