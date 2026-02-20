@@ -391,48 +391,48 @@ Below are screenshots from each task demonstrating execution and verification.
 
 ## 🖼 Task 1 – Nginx Management
 
-![Task1-1](Week 3/Task 1/1.png)
-![Task1-2](Week 3/Task 1/2.png)
-![Task1-3](Week 3/Task 1/3.png)
+![Task1-1](Task%201/1.png)
+![Task1-2](Task%201/2.png)
+![Task1-3](Task%201/3.png)
 
 ---
 
 ## 🖼 Task 2 – EBS Volume & Mount
 
-![Task2-1](Week 3/Task 2/1.png)
-![Task2-2](Week 3/Task 2/2.png)
-![Task2-3](Week 3/Task 2/3.png)
-![Task2-4](Week 3/Task 2/4.png)
-![Task2-5](Week 3/Task 2/5.png)
-![Task2-6](Week 3/Task 2/6.png)
+![Task2-1](Task%202/1.png)
+![Task2-2](Task%202/2.png)
+![Task2-3](Task%202/3.png)
+![Task2-4](Task%202/4.png)
+![Task2-5](Task%202/5.png)
+![Task2-6](Task%202/6.png)
 
 ---
 
 ## 🖼 Task 3 – Monitoring & Performance
 
-![Task3-1](Week 3/Task 3/1.png)
-![Task3-2](Week 3/Task 3/2.png)
-![Task3-3](Week 3/Task 3/3.png)
-![Task3-4](Week 3/Task 3/4.png)
-![Task3-5](Week 3/Task 3/5.png)
-![Task3-6](Week 3/Task 3/6.png)
-![Task3-7](Week 3/Task 3/7.png)
-![Task3-8](Week 3/Task 3/8.png)
-![Task3-9](Week 3/Task 3/9.png)
-![Task3-10](Week 3/Task 3/10.png)
-![Task3-11](Week 3/Task 3/11.png)
-![Task3-12](Week 3/Task 3/12.png)
+![Task3-1](Task%203/1.png)
+![Task3-2](Task%203/2.png)
+![Task3-3](Task%203/3.png)
+![Task3-4](Task%203/4.png)
+![Task3-5](Task%203/5.png)
+![Task3-6](Task%203/6.png)
+![Task3-7](Task%203/7.png)
+![Task3-8](Task%203/8.png)
+![Task3-9](Task%203/9.png)
+![Task3-10](Task%203/10.png)
+![Task3-11](Task%203/11.png)
+![Task3-12](Task%203/12.png)
 
 ---
 
 ## 🖼 Task 4 & 5 – Environment & Firewall
 
-![Task4-1](Week 3/Task 4 & 5/1.png)
-![Task4-2](Week 3/Task 4 & 5/2.png)
-![Task4-3](Week 3/Task 4 & 5/3.png)
-![Task4-4](Week 3/Task 4 & 5/4.png)
-![Task4-5](Week 3/Task 4 & 5/5.png)
-![Task4-6](Week 3/Task 4 & 5/6.png)
-![Task4-7](Week 3/Task 4 & 5/7.png)
+![Task4-1](Task%204%20%26%205/1.png)
+![Task4-2](Task%204%20%26%205/2.png)
+![Task4-3](Task%204%20%26%205/3.png)
+![Task4-4](Task%204%20%26%205/4.png)
+![Task4-5](Task%204%20%26%205/5.png)
+![Task4-6](Task%204%20%26%205/6.png)
+![Task4-7](Task%204%20%26%205/7.png)
 
 ---
