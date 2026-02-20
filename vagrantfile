@@ -1,0 +1,42 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  # -----------------------
+  # Base Ubuntu Image
+  # -----------------------
+  config.vm.box = "ubuntu/jammy64"
+
+  # -----------------------
+  # Hostname
+  # -----------------------
+  config.vm.hostname = "DevOps-Intern"
+
+  # -----------------------
+  # VM Settings
+  # -----------------------
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "DevOps-Intern"
+    vb.memory = 2048
+    vb.cpus = 2
+  end
+
+  # -----------------------
+  # Provisioning Script
+  # -----------------------
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "=== Updating OS Packages ==="
+    sudo apt-get update -y
+    sudo apt-get upgrade -y
+
+    echo "=== Installing Basic Tools ==="
+    sudo apt-get install -y curl wget vim net-tools git
+
+    echo "=== Setting hostname ==="
+    sudo hostnamectl set-hostname DevOps-Intern
+
+    echo "=== Finished Provisioning ==="
+  SHELL
+
+end
