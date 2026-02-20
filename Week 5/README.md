@@ -260,35 +260,35 @@ Below are screenshots demonstrating installation, configuration, and verificatio
 
 ## 🖼 Task 1 – RabbitMQ
 
-![RabbitMQ-1](Week 5/images/1.png)
-![RabbitMQ-2](Week 5/images/2.png)
-![RabbitMQ-3](Week 5/images/3.png)
-![RabbitMQ-4](Week 5/images/4.png)
-![RabbitMQ-5](Week 5/images/5.png)
-![RabbitMQ-6](Week 5/images/6.png)
+![RabbitMQ-1](images/1.png)
+![RabbitMQ-2](images/2.png)
+![RabbitMQ-3](images/3.png)
+![RabbitMQ-4](images/4.png)
+![RabbitMQ-5](images/5.png)
+![RabbitMQ-6](images/6.png)
 
 ---
 
 ## 🖼 Task 2 – MongoDB
 
-![MongoDB-1](Week 5/images/7.png)
-![MongoDB-2](Week 5/images/8.png)
-![MongoDB-3](Week 5/images/9.png)
-![MongoDB-4](Week 5/images/10.png)
-![MongoDB-5](Week 5/images/11.png)
+![MongoDB-1](images/7.png)
+![MongoDB-2](images/8.png)
+![MongoDB-3](images/9.png)
+![MongoDB-4](images/10.png)
+![MongoDB-5](images/11.png)
 
 ---
 
 ## 🖼 Task 3 – Redis
 
-![Redis-1](Week 5/images/12.png)
-![Redis-2](Week 5/images/13.png)
-![Redis-3](Week 5/images/14.png)
-![Redis-4](Week 5/images/15.png)
-![Redis-5](Week 5/images/16.png)
-![Redis-6](Week 5/images/17.png)
-![Redis-7](Week 5/images/18.png)
-![Redis-8](Week 5/images/19.png)
-![Redis-9](Week 5/images/20.png)
+![Redis-1](images/12.png)
+![Redis-2](images/13.png)
+![Redis-3](images/14.png)
+![Redis-4](images/15.png)
+![Redis-5](images/16.png)
+![Redis-6](images/17.png)
+![Redis-7](images/18.png)
+![Redis-8](images/19.png)
+![Redis-9](images/20.png)
 
 ---
