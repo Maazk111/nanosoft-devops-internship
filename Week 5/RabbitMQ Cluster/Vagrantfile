@@ -1,0 +1,37 @@
+Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = false
+    vb.memory = 2048
+    vb.cpus = 2
+  end
+
+  # -------------------------
+  # RabbitMQ Node 1 (Seed)
+  # -------------------------
+  config.vm.define "rabbit1" do |r1|
+    r1.vm.box = "ubuntu/xenial64"
+    r1.vm.hostname = "rabbit1"
+    r1.vm.network "private_network", ip: "192.168.56.21"
+    r1.vm.provision "shell", path: "scripts/rabbitmq-node1.sh"
+  end
+
+  # -------------------------
+  # RabbitMQ Node 2
+  # -------------------------
+  config.vm.define "rabbit2" do |r2|
+    r2.vm.box = "ubuntu/xenial64"
+    r2.vm.hostname = "rabbit2"
+    r2.vm.network "private_network", ip: "192.168.56.22"
+    r2.vm.provision "shell", path: "scripts/rabbitmq-node2.sh"
+  end
+
+  # -------------------------
+  # RabbitMQ Node 3
+  # -------------------------
+  config.vm.define "rabbit3" do |r3|
+    r3.vm.box = "ubuntu/xenial64"
+    r3.vm.hostname = "rabbit3"
+    r3.vm.network "private_network", ip: "192.168.56.23"
+    r3.vm.provision "shell", path: "scripts/rabbitmq-node3.sh"
+  end
+end
